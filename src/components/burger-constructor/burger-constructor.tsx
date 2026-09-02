@@ -13,10 +13,12 @@ const DEMO_FILLINGS_COUNT = 6;
 
 type TBurgerConstructorProps = {
   ingredients: TIngredient[];
+  onOrderClick: () => void;
 };
 
 const BurgerConstructor = ({
   ingredients,
+  onOrderClick,
 }: TBurgerConstructorProps): React.JSX.Element => {
   const bun = ingredients.find((item) => item.type === 'bun');
   const fillings = ingredients
@@ -80,7 +82,7 @@ const BurgerConstructor = ({
           {totalPrice}
           <CurrencyIcon type="primary" />
         </p>
-        <Button htmlType="button" type="primary" size="large">
+        <Button htmlType="button" type="primary" size="large" onClick={onOrderClick}>
           Оформить заказ
         </Button>
       </div>
