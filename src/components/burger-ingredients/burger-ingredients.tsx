@@ -11,6 +11,7 @@ type TTabValue = 'bun' | 'sauce' | 'main';
 
 type TBurgerIngredientsProps = {
   ingredients: TIngredient[];
+  onIngredientClick: (ingredient: TIngredient) => void;
 };
 
 const TABS: { value: TTabValue; label: string }[] = [
@@ -21,7 +22,8 @@ const TABS: { value: TTabValue; label: string }[] = [
 
 const BurgerIngredients = ({
   ingredients,
-}: TBurgerIngredientsProps) => {
+  onIngredientClick,
+}: TBurgerIngredientsProps): React.JSX.Element => {
   const [currentTab, setCurrentTab] = useState<TTabValue>('bun');
 
   const sections = [
@@ -68,7 +70,7 @@ const BurgerIngredients = ({
             <ul className={`${cls.cards} pt-6 pl-4 pr-4`}>
               {items.map((ingredient) => (
                 <li key={ingredient._id}>
-                  <IngredientCard ingredient={ingredient} />
+                  <IngredientCard ingredient={ingredient} onClick={onIngredientClick} />
                 </li>
               ))}
             </ul>

@@ -7,14 +7,19 @@ import cls from './ingredient-card.module.css';
 type TIngredientCardProps = {
   ingredient: TIngredient;
   count?: number;
+  onClick?: (ingredient: TIngredient) => void;
 };
 
 const IngredientCard = ({
   ingredient,
   count = 0,
-}: TIngredientCardProps) => {
+  onClick,
+}: TIngredientCardProps): React.JSX.Element => {
   return (
-    <article className={`${cls.card} pt-6 pb-8 pl-4 pr-4`}>
+    <article
+      className={`${cls.card} pt-6 pb-8 pl-4 pr-4`}
+      onClick={() => onClick?.(ingredient)}
+    >
       {count > 0 && <Counter count={count} size="default" />}
       <img className={cls.image} src={ingredient.image} alt={ingredient.name} />
       <div className={`${cls.price} mt-1 mb-1`}>
