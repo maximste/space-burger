@@ -1,4 +1,4 @@
-export type TIngredient = {
+type TIngredient = {
   _id: string;
   name: string;
   type: string;
@@ -12,3 +12,5 @@ export type TIngredient = {
   image_mobile: string;
   __v: number;
 };
+
+export type { TIngredient };
